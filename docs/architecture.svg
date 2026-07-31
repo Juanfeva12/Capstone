@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650">
+  <style>
+    .title{font:700 34px Arial;fill:#17252f}.head{font:700 24px Arial;fill:#17252f}.txt{font:18px Arial;fill:#17252f}.small{font:15px Arial;fill:#43555f}.box{fill:#fff;stroke:#0e7c86;stroke-width:3;rx:14}.load{fill:#f8eddc;stroke:#b15a16;stroke-width:2;rx:12}.ipc{fill:#e4f1f1;stroke:#0e7c86;stroke-width:2;rx:12}.fault{fill:#f7e4e4;stroke:#b23636;stroke-width:2;rx:12}.arrow{stroke:#17252f;stroke-width:3;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#17252f"/></marker></defs>
+  <rect width="1200" height="650" fill="#f5f7f6"/>
+  <text x="600" y="48" text-anchor="middle" class="title">Space Ground Command Response System</text>
+  <text x="300" y="95" text-anchor="middle" class="head">Core 1 — Real-Time Plane</text>
+  <text x="930" y="95" text-anchor="middle" class="head">Core 0 — Monitoring</text>
+
+  <rect x="55" y="130" width="190" height="75" class="box"/><text x="150" y="160" text-anchor="middle" class="txt">GPIO 18 Button</text><text x="150" y="186" text-anchor="middle" class="small">Ground command</text>
+  <rect x="325" y="130" width="200" height="75" class="box"/><text x="425" y="160" text-anchor="middle" class="txt">IRAM_ATTR ISR</text><text x="425" y="186" text-anchor="middle" class="small">GPIO 19 timing pulse</text>
+  <path d="M245 167 H325" class="arrow"/>
+
+  <rect x="100" y="285" width="230" height="90" class="ipc"/><text x="215" y="318" text-anchor="middle" class="txt">Binary Semaphore</text><text x="215" y="346" text-anchor="middle" class="small">Comparison path</text>
+  <rect x="450" y="285" width="230" height="90" class="ipc"/><text x="565" y="318" text-anchor="middle" class="txt">Direct Notification</text><text x="565" y="346" text-anchor="middle" class="small">Ground-command path</text>
+  <path d="M390 205 L230 285" class="arrow"/><path d="M460 205 L550 285" class="arrow"/>
+
+  <rect x="100" y="430" width="230" height="85" class="box"/><text x="215" y="462" text-anchor="middle" class="txt">btn_sem task</text><text x="215" y="490" text-anchor="middle" class="small">Latency comparison</text>
+  <rect x="450" y="430" width="230" height="85" class="box"/><text x="565" y="462" text-anchor="middle" class="txt">btn_notif task</text><text x="565" y="490" text-anchor="middle" class="small">Accepts command</text>
+  <path d="M215 375 V430" class="arrow"/><path d="M565 375 V430" class="arrow"/>
+
+  <rect x="65" y="555" width="620" height="62" class="load"/><text x="375" y="580" text-anchor="middle" class="txt">App 2 Load Fixture: A 10 ms · B 20 ms · C 50 ms · D 100 ms</text><text x="375" y="604" text-anchor="middle" class="small">Priorities 15 / 10 / 5 / 2 — WCET maxima logged every 5 seconds</text>
+
+  <rect x="800" y="155" width="280" height="105" class="box"/><text x="940" y="190" text-anchor="middle" class="txt">metrics task</text><text x="940" y="218" text-anchor="middle" class="small">WCET + heartbeat summary</text><text x="940" y="242" text-anchor="middle" class="small">Pinned to Core 0</text>
+  <rect x="800" y="330" width="280" height="115" class="fault"/><text x="940" y="365" text-anchor="middle" class="txt">FAULT_MODE</text><text x="940" y="394" text-anchor="middle" class="small">Skips immediate ISR yield</text><text x="940" y="420" text-anchor="middle" class="small">Signals remain delivered</text>
+  <path d="M680 472 C760 472 760 210 800 210" class="arrow"/>
+  <path d="M525 165 C700 165 715 387 800 387" class="arrow"/>
+
+  <text x="600" y="640" text-anchor="middle" class="small">Queue-free minimal integration: App 3 interrupt design + App 2 deterministic load + capstone fault injection and WCET evidence</text>
+</svg>

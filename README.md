@@ -138,13 +138,9 @@ This project is tailored toward an **embedded firmware / real-time systems role*
 
 See [docs/reflection.md](docs/reflection.md).
 
-## Demo video
-
-A demo video was not submitted. The GitHub Pages site includes the live Wokwi link, architecture, screenshots, timing evidence, fault-injection explanation, and full documentation. This omission may reduce the score assigned to the video portion of the rubric.
-
 ## AI assistance disclosure
 
-ChatGPT was used to help organize the final repository, create the static portfolio page, review the capstone documentation, and make a minimal addition that prints existing WCET counters. The original App 3 interrupt, notification, semaphore, load-task, and measurement design was preserved. All reported timing values came from the user's Wokwi runs or existing App 3 evidence; unrecorded WCET values were not invented.
+ChatGPT was used to help organize the final repository, review the capstone documentation, and make a minimal addition that prints existing WCET counters. The original App 3 interrupt, notification, semaphore, load-task, and measurement design was preserved. All reported timing values came from the user's Wokwi runs or existing App 3 evidence; unrecorded WCET values were not invented.
 
 ## License
 
